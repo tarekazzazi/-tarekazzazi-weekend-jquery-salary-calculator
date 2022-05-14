@@ -1,3 +1,26 @@
 table,th,td{
 border: 1px solid black;
 }
+
+.container{
+    margin: 20px;
+    width: auto;
+    border: 15px solid green;
+    padding: 50px;
+}
+
+.siteHeader{
+    background-color: grey;
+    color: white;
+}
+
+.siteFooter{
+    background-color: lightskyblue;
+    color: whitesmoke;
+}
+
+.centerText{
+text-align: center;
+
+}
+
