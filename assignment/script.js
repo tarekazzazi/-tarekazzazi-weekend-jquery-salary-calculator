@@ -1,15 +1,13 @@
-let tableEmployees = [];
-
-let salarytotals = [];
+let tableEmployees = []; // empty array of tableEmployees
 
 $(document).ready(function () {
     console.log('ready!');
 
-    $(document).on('click', '#SubmitBtn', AddEmployeeInfo);
-    $(document).on('click', '.delete-btn', onDelete);
+    $(document).on('click', '#SubmitBtn', AddEmployeeInfo); // readys the document for SubmitBtn for AddEmployeeInfo function
+    $(document).on('click', '.delete-btn', onDelete); // readys document for delete-btn for onDelete function
 
 
-
+    
 
 
 
@@ -37,7 +35,7 @@ function AddEmployeeInfo() {
 
     newEmployee = { 
         // I tried to take in the values entered and create a object called newEmployee with them which I pushed to a array called tableEmployees.  Simular to the Object-group-bonus calculator. I had trouble getting the annual salary values from tableEmployees array.
-        
+        // Now working : )
         firstName: $('#firstName').val(),
 
         lastName: $('#lastName').val(),
@@ -46,10 +44,11 @@ function AddEmployeeInfo() {
 
         jobTitle: $('#jobTitle').val(),
 
-        annuelSalary: $('#annualSalary').val(),
+        annuelSalary: Number($('#annualSalary').val()), // converted the annuelSalary string to a number in my employee object
     }
 
-    tableEmployees.push(newEmployee); 
+    tableEmployees.push(newEmployee); // pushed the newEmployee to my array called tableEmployees
+
     
     // added newEmployee object to tableEmployees array
 
@@ -81,7 +80,7 @@ function AddEmployeeInfo() {
 
     $('#annualSalary').val('');
 
-    calcAnnualSalary();
+    calcAnnualSalary(tableEmployees);
 }
 
 function onDelete() {
@@ -97,45 +96,37 @@ function onDelete() {
     //removes the row with the delete button on it
 }
 
-function findEmployeeSalary(employeeArray) { 
 
-    // takes in array of newEmployee objects and calculate the salary for each of them
-    // for every employee in the employeeArray 
+function calcAnnualSalary(array) {
 
-
-    for (const employee of employeeArray) {
-
-        let res = calcAnnualSalary(employee)
-
-    }
-
-}
-
-function calcAnnualSalary(employeeObject) {
-
-    // lets totalSalary variable = array of employee objects which it then goes inside newEmployee and then annuelSalary
+    let totalEmployeeSalry = 0; 
     
-    let totalSalary = (tableEmployees.newEmployee.annuelSalary); // I'm not sure why I get undefined 
+    // sets totalEmployeeSalary to 0;
 
-    let value = Number(totalSalary); // changes totalSalary from string to Number
-
-    console.log('the salary is', value);
-
-
-
-
-
-
-}
-
-for (employee of tableEmployees) {
-
-    // Checks to see if variable total salary is greater than 20000 
-
-    if (totalSalary > 20000) {
-
-        // If true change the id total background-color to red
+    for (let employee of array) { 
         
-        $('#total').css('background-color', 'red');
+        // loops through an array for every employee object
+
+        totalEmployeeSalry += employee.annuelSalary; 
+        
+        // takes totalEmployeeSalry and adds employee object annuelSalary 
+    
     }
+
+    totalEmployeeSalry /= 12 ; 
+    
+    // divides total yearly salry and divides by 12
+
+    if (totalEmployeeSalry > 20000) {
+
+    // If true change the id total background-color to red
+
+    $('#total').css('background-color', 'red');
+    }
+
+    $('.totalCost').text(totalEmployeeSaary);
+
+
+    console.log(totalEmployeeSaary);
+
 }
