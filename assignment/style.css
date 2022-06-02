@@ -5,27 +5,37 @@ border: 1px solid black;
 .container{
     margin: 20px;
     width: auto;
-    border: 15px solid green;
     padding: 50px;
+   
 }
 .body{
     margin: 0;
+   
 }
 
 .siteHeader{
     
-    
-    padding: 1em;
-    background-color: grey;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: green;
     color: white;
     text-align: center;
 }
 
 .siteFooter{
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: lightskyblue;
     color: whitesmoke;
 }
-
+.header{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 #total{
     padding: 1em;
 }
