@@ -6,12 +6,6 @@ $(document).ready(function () {
     $(document).on('click', '#SubmitBtn', AddEmployeeInfo); // readys the document for SubmitBtn for AddEmployeeInfo function
     $(document).on('click', '.delete-btn', onDelete); // readys document for delete-btn for onDelete function
 
-
-    
-
-
-
-
 });
 
 
@@ -21,10 +15,10 @@ function AddEmployeeInfo() {
     console.log('In AddEmployeeInfo');
 
     // I could not understand how to access the annualSalary colum fromm my html table that I created -- now Working
-    
+
     // gets input firstName  assigns it to variable called firstName
 
-    let firstName = $('#firstName').val(); 
+    let firstName = $('#firstName').val();
 
     let lastName = $('#lastName').val();
 
@@ -34,11 +28,7 @@ function AddEmployeeInfo() {
 
     let annuelSalary = $('#annualSalary').val();
 
-    newEmployee = { 
-
-        // I tried to take in the values entered and create a object called newEmployee with them which I pushed to a array called tableEmployees.  Simular to the Object-group-bonus calculator. I had trouble getting the annual salary values from tableEmployees array.
-        
-        // Now working : )
+    newEmployee = {
 
         firstName: $('#firstName').val(),
 
@@ -48,19 +38,20 @@ function AddEmployeeInfo() {
 
         jobTitle: $('#jobTitle').val(),
 
-        annuelSalary: Number($('#annualSalary').val()), 
-        
+        annuelSalary: Number($('#annualSalary').val()),
+
         // converted the annuelSalary string to a number in my employee object
     }
 
-    tableEmployees.push(newEmployee); 
-    
-        // pushed the newEmployee to my array called tableEmployees
+    tableEmployees.push(newEmployee);
 
-    
-        // added newEmployee object to tableEmployees array
+    // pushed the newEmployee to my array called tableEmployees
 
-        // Adds inputs from variables assigned above and appends them to the DOM is a table format
+    // added newEmployee object to tableEmployees array
+
+    // Adds inputs from variables assigned above and appends them to the DOM is a table format
+
+    //$('#employeesTable').empty();
 
     $('#employeesTable').append(`
     <tr>
@@ -78,15 +69,7 @@ function AddEmployeeInfo() {
     </tr>
 `)
 
-    $('#firstName').val('');
-
-    $('#lastName').val('');
-
-    $('#ID').val('');
-
-    $('#jobTitle').val('');
-
-    $('#annualSalary').val('');
+    $('.input').val('');
 
     calcAnnualSalary(tableEmployees);
 }
@@ -99,44 +82,44 @@ function onDelete() {
 
         .parent().parent()
 
-        // assigns tr variable to this parent tr parent td
+    // assigns tr variable to this parent tr parent td
 
     tr.remove();
 
-        //removes the row with the delete button on it
+    //removes the row with the delete button on it
 }
 
 
 function calcAnnualSalary(array) {
 
-    let totalEmployeeSalry = 0; 
-    
-        // sets totalEmployeeSalary to 0;
+    let totalEmployeeSalry = 0;
 
-    for (let employee of array) { 
-        
+    // sets totalEmployeeSalary to 0;
+
+    for (let employee of array) {
+
         // loops through an array for every employee object
 
-        totalEmployeeSalry += employee.annuelSalary; 
-        
+        totalEmployeeSalry += employee.annuelSalary;
+
         // takes totalEmployeeSalry and adds employee object annuelSalary 
-    
+
     }
 
-    totalEmployeeSalry /= 12 ; 
-    
-        // divides total yearly salry and divides by 12
+    totalEmployeeSalry /= 12;
+
+    // divides total yearly salry and divides by 12
 
     if (totalEmployeeSalry > 20000) {
 
         // If true change the id total background-color to red
 
-    $('#total').css('background-color', 'red');
+        $('#total').css('background-color', 'red');
     }
 
-    $('.totalCost').text(totalEmployeeSaary);
+    $('.totalCost').text(totalEmployeeSalry);
 
 
-    console.log(totalEmployeeSaary);
+    console.log(totalEmployeeSalry);
 
 }
