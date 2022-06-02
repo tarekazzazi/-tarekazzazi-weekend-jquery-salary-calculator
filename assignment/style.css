@@ -8,10 +8,17 @@ border: 1px solid black;
     border: 15px solid green;
     padding: 50px;
 }
+.body{
+    margin: 0;
+}
 
 .siteHeader{
+    
+    
+    padding: 1em;
     background-color: grey;
     color: white;
+    text-align: center;
 }
 
 .siteFooter{
@@ -19,9 +26,7 @@ border: 1px solid black;
     color: whitesmoke;
 }
 
-.centerText{
-text-align: center;
-
+#total{
+    padding: 1em;
 }
-
 

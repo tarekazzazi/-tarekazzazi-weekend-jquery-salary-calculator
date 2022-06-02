@@ -3,18 +3,16 @@ let tableEmployees = []; // empty array of tableEmployees
 $(document).ready(function () {
     console.log('ready!');
 
-    $(document).on('click', '#SubmitBtn', AddEmployeeInfo); // readys the document for SubmitBtn for AddEmployeeInfo function
+    $(document).on('click', '#SubmitBtn', addEmployeeInfo); // readys the document for SubmitBtn for AddEmployeeInfo function
     $(document).on('click', '.delete-btn', onDelete); // readys document for delete-btn for onDelete function
 
 });
 
 
 
-function AddEmployeeInfo() {
+function addEmployeeInfo() {
 
     console.log('In AddEmployeeInfo');
-
-    // I could not understand how to access the annualSalary colum fromm my html table that I created -- now Working
 
     // gets input firstName  assigns it to variable called firstName
 
@@ -28,7 +26,7 @@ function AddEmployeeInfo() {
 
     let annuelSalary = $('#annualSalary').val();
 
-    newEmployee = {
+    let newEmployee = {
 
         firstName: $('#firstName').val(),
 
@@ -54,12 +52,12 @@ function AddEmployeeInfo() {
     //$('#employeesTable').empty();
 
     $('#employeesTable').append(`
-    <tr>
+    <tr data-id=${ID} data-employee-annuel-salary=${annuelSalary}>
         <td>${firstName}</td> 
         <td>${lastName}</td>
         <td>${ID}</td>
         <td>${jobTitle}</td>
-        <td class"salary" >$${annuelSalary}</td> // I tried to create a class called "salary" to access all the salaries in my table but that seemed to not work
+        <td class"salary">$${annuelSalary}</td> 
 
         <td>
             <button class="delete-btn">
@@ -79,9 +77,7 @@ function onDelete() {
     console.log('in onDelete', $(this));
 
     let tr = $(this)
-
         .parent().parent()
-
     // assigns tr variable to this parent tr parent td
 
     tr.remove();
@@ -92,7 +88,7 @@ function onDelete() {
 
 function calcAnnualSalary(array) {
 
-    let totalEmployeeSalry = 0;
+    let totalEmployeeSalary = 0;
 
     // sets totalEmployeeSalary to 0;
 
@@ -100,26 +96,27 @@ function calcAnnualSalary(array) {
 
         // loops through an array for every employee object
 
-        totalEmployeeSalry += employee.annuelSalary;
+        totalEmployeeSalary += employee.annuelSalary;
 
         // takes totalEmployeeSalry and adds employee object annuelSalary 
 
     }
 
-    totalEmployeeSalry /= 12;
+    totalEmployeeSalary /= 12;
 
     // divides total yearly salry and divides by 12
 
-    if (totalEmployeeSalry > 20000) {
+    if (totalEmployeeSalary > 20000) {
 
         // If true change the id total background-color to red
 
         $('#total').css('background-color', 'red');
     }
 
-    $('.totalCost').text(totalEmployeeSalry);
+    $('.totalCost').text(totalEmployeeSalary);
 
 
-    console.log(totalEmployeeSalry);
+    console.log(totalEmployeeSalary);
 
 }
+
